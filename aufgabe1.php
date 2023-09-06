@@ -10,8 +10,11 @@ if(isset($_GET['reset'])) {
 }
 
 if(isset($_POST['produkt'])) {
-    $_SESSION['produkte'][] = $_POST['produkt'];
+    $_SESSION['produkte'][] = trim(htmlspecialchars($_POST['produkt'], ENT_QUOTES, 'UTF-8')); // Die eckigen Klammern nach $_SESSION['produkte'] sind essentiel für die Funktion, da sonst nur das letzte Produkt in der Session gespeichert wird. So wird jedes Produkt nach und nach an die nächste freie Stelle des Arrays gespeichert.
 }
+
+// $cnt = ($_SESSION['produkte']);
+
 
 ?>
 
@@ -42,10 +45,11 @@ if(isset($_POST['produkt'])) {
 
                 <div class="mb-3">
                     <h2>Einkaufsliste:</h2>
-                    <ul>
-                    <?php foreach($_SESSION['produkte'] as $produkt) { ?>
-                            <li><?php echo $produkt; } ?></li>
-                    </ul>
+                        <ul>
+                        <?php foreach($_SESSION['produkte'] as $produkt) { ?>
+                                <li><?php echo $produkt ?> <a href="aufgabe1.php?reset">Delete this</a></li>
+                                <?php } ?>
+                        </ul>
                 </div>
         </form>
     </main>
