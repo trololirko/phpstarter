@@ -1,7 +1,3 @@
-<!-- // Schreibe eine Webbasierte Einkaufsliste
-// Über ein Formular werden Produkt-Namen eingetragen, die der Session hinzugefügt werden
-// Unterhalb des Formulars werde all in der Session enthaltenen Produkte angezeigt -->
-
 <?php
 
 include 'error_reporting.php';
@@ -16,10 +12,6 @@ if(isset($_GET['reset'])) {
 if(isset($_POST['produkt'])) {
     $_SESSION['produkte'][] = $_POST['produkt'];
 }
-
-// if(isset($_SESSION['produkte'])) {
-//     print_r($_SESSION['produkte']);
-// }
 
 ?>
 
